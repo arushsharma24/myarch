@@ -42,4 +42,6 @@ Anyways, will continue this later.
 ### 1. GDM not loading
 After installing gnome, when I rebooted into the system, gdm would not load, and I would just get a black screen with a blinking cursor. One way to login would be to go to tty2 and login from there using startx or something, however, if I would do a `Ctrl-Alt-F2` and then `Ctrl-Alt-F1` back to tty1, gdm would load, and everything seemed fine (except, everything was *not* fine. Somehow even though the default windowing system for gnome is Wayland, I could see in the About that it was using X11. And then I realized, this was a hardware problem, my amdgpu was not loading for some reason, and hence I had to edit the /etc/mkinitcpio.conf file and add my integrated graphics card (i915) instead of the already present (amdgpu) entry. 
 This solution was found on the archwiki [here](https://wiki.archlinux.org/index.php/GDM#GDM_shows_black_screen_with_blinking_white_cursor).
-After I did this and did a `sudo mkinitcpio -P`, on rebooting I got a 
+After I did this and did a `sudo mkinitcpio -P`. 
+
+Rebooted, and voila, got my gdm greeting me as it should, on time, as well as GNOME using Wayland by default (which meant that the three finger gestures worked yayy, gnome 40 would be pretty much the same to me without the three finger gestures lol, it's such a make or break feature)
